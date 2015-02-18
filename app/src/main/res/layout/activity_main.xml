@@ -47,4 +47,13 @@
         android:layout_centerHorizontal="true"
         android:textColor="#ff00b5ff" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Information"
+        android:id="@+id/button5"
+        android:layout_below="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
