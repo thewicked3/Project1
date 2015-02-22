@@ -16,6 +16,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".BMRcal"
+            android:label="@string/title_activity_bmrcal" >
+        </activity>
+        <activity
+            android:name=".Exercal"
+            android:label="@string/title_activity_exercal" >
+        </activity>
+        <activity
+            android:name=".exercise_list"
+            android:label="@string/title_activity_exercise_list" >
+        </activity>
+        <activity
+            android:name=".information"
+            android:label="@string/title_activity_information" >
+        </activity>
     </application>
 
 </manifest>

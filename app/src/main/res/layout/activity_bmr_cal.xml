@@ -36,12 +36,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Gender:"
-        android:id="@+id/textView7"
+        android:id="@+id/textView1111"
         android:textSize="20dp"
         android:textColor="#ff00ff99"
         android:layout_below="@+id/editText3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <RadioButton
         android:layout_width="wrap_content"
@@ -50,7 +52,7 @@
         android:id="@+id/radioButton8"
         android:checked="false"
         android:textColor="#ff00caff"
-        android:layout_below="@+id/textView7"
+        android:layout_below="@+id/textView1111"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -165,13 +167,13 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Output BMR"
+        android:text="BMR"
         android:id="@+id/textView12"
         android:textColor="#ffa09a9a"
         android:textStyle="bold|italic"
         android:gravity="center_vertical|center_horizontal"
         android:background="#ff3e414d"
-        android:layout_toEndOf="@+id/textView7"
+        android:layout_toEndOf="@+id/textView1111"
         android:layout_below="@+id/textView11"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
