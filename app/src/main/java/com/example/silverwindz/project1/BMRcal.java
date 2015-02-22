@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class BMRcal extends ActionBarActivity {
             case R.id.gotocal:
                 i = new Intent(this, Exercal.class);
                 startActivityForResult(i,99);
+
                 break;
         }
     }
@@ -46,9 +48,11 @@ public class BMRcal extends ActionBarActivity {
 
         double bmrout = 0;
 
+
         //GET THE INPUT AND CHANGE THE UNIT
 
         RadioGroup gender = (RadioGroup)findViewById(R.id.gender);
+        RadioButton gr = (RadioButton) findViewById(gender.getCheckedRadioButtonId());
         int selgend = gender.getCheckedRadioButtonId();
 
         if (selgend == R.id.male) { //
@@ -60,9 +64,18 @@ public class BMRcal extends ActionBarActivity {
             bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
         }
 
-
         TextView tv = (TextView)findViewById(R.id.bmrout);
         tv.setText(String.format("%.2f",bmrout));
+
+        Intent res = new Intent();
+        res.putExtra("toGender", gr.getText().toString());
+        res.putExtra("toHeight", Double.parseDouble(height1.toString()));
+        res.putExtra("toWeight", Double.parseDouble(weight2.toString()));
+        res.putExtra("toAge", Double.parseDouble(age3.toString()));
+        res.putExtra("toBmr", bmrout);
+
+        finish();
+
     }
 
     @Override
