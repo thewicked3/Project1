@@ -11,22 +11,24 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="exercise calculate"
-        android:id="@+id/button"
+        android:text="BMR Calculator"
+        android:id="@+id/bmr"
         android:layout_marginBottom="120dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonClicked" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exercise List"
-        android:id="@+id/button2"
+        android:text="ATTEMPT List"
+        android:id="@+id/list"
         android:layout_marginTop="52dp"
-        android:layout_alignTop="@+id/button"
+        android:layout_alignTop="@+id/bmr"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonClicked" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -34,7 +36,7 @@
         android:id="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:src="@drawable/images"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/bmr"
         android:layout_below="@+id/textView" />
 
     <TextView
@@ -51,9 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Information"
-        android:id="@+id/button5"
-        android:layout_below="@+id/button2"
+        android:id="@+id/info"
+        android:layout_below="@+id/list"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="buttonClicked" />
 
 </RelativeLayout>

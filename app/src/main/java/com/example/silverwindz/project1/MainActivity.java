@@ -1,9 +1,13 @@
 package com.example.silverwindz.project1;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,6 +19,28 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    public void buttonClicked(View v) {
+        int id = v.getId();
+        Intent i;
+
+        switch(id) {
+            case R.id.bmr:
+                i = new Intent(this, BMRcal.class);
+                startActivity(i);
+                break;
+
+            case R.id.list:
+                i = new Intent(this, exercise_list.class);
+                startActivity(i);
+                break;
+
+            case R.id.info:
+                i = new Intent(this, information.class);
+                startActivity(i);
+
+                break;
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -21,17 +21,6 @@
         android:textSize="24dp"
         android:gravity="center_vertical|center_horizontal" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:textColor="#ff00ff55"
-        android:enabled="false"
-        android:text="___________________________________________"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,9 +29,9 @@
         android:id="@+id/textView13"
         android:textSize="20dp"
         android:textColor="#ff00ff99"
-        android:layout_below="@+id/editText2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2" />
 
     <EditText
         android:layout_width="match_parent"

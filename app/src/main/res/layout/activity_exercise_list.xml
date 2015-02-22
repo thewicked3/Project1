@@ -4,54 +4,11 @@
     android:layout_height="match_parent"
     android:background="#ff2f2f2f">
 
-    <TableRow
+    <TextView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:layout_column="7"
-            android:text="Attempt List:"
-            android:textColor="#ff08deff" />
-    </TableRow>
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_column="7"
+        android:text="Attempt List:"
+        android:textColor="#ff08deff" />
 </TableLayout>
