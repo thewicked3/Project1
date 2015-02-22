@@ -25,63 +25,44 @@ public class BMRcal extends ActionBarActivity {
         switch (id) {
             case R.id.gotocal:
                 i = new Intent(this, Exercal.class);
-                startActivity(i);
+                startActivityForResult(i,99);
                 break;
         }
     }
 
     public void buttonBMRClicked (View v)
     {
-        EditText etInput = (EditText)findViewById(R.id.etInput);
-        String s = etInput.getText().toString();
-        Double input = Double.parseDouble(s);
+        EditText height = (EditText)findViewById(R.id.height);
+        String h = height.getText().toString();
+        Double height1 = Double.parseDouble(h);
+
+        EditText weight = (EditText)findViewById(R.id.weight);
+        String w = weight.getText().toString();
+        Double weight2 = Double.parseDouble(w);
+
+        EditText age = (EditText)findViewById(R.id.age);
+        String a = age.getText().toString();
+        Double age3 = Double.parseDouble(a);
+
+        double bmrout = 0;
 
         //GET THE INPUT AND CHANGE THE UNIT
 
-        RadioGroup rgFrom = (RadioGroup)findViewById(R.id.rgFrom);
-        int selFrom = rgFrom.getCheckedRadioButtonId();
+        RadioGroup gender = (RadioGroup)findViewById(R.id.gender);
+        int selgend = gender.getCheckedRadioButtonId();
 
-        RadioGroup rgTo = (RadioGroup)findViewById(R.id.rgTo);
-        int selTo = rgTo.getCheckedRadioButtonId();
-
-
-
-        if (selFrom == R.id.rbFrmC) { //The user wants to convert from Celsius.
-            if(selTo == R.id.rbToF)
-            {
-                input = (input * 9/5)+32;
-            }
-            else if(selTo == R.id.rbToK)
-            {
-                input += 273.15;
-            }
+        if (selgend == R.id.male) { //
+            bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
         }
-        else if (selFrom == R.id.rbFrmF) { //The user wants to convert from Farenheit.
-            if(selTo == R.id.rbToC)
-            {
-                input = (input -32)*5/9;
-            }
-            else if(selTo == R.id.rbToK)
-            {
-                input = (input +459.67)*5/9;
-            }
-        }
-        else // The user wants to convert from Kelvin.
+
+        else //
         {
-            if(selTo == R.id.rbToC)
-            {
-                input -= 273.15;
-            }
-            else if(selTo == R.id.rbToF)
-            {
-                input = (input * 9/5)-459.67;
-            }
+            bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
         }
 
 
-
-        TextView tv = (TextView)findViewById(R.id.tvOutput);
-        tv.setText(String.format("%.2f",input));
+        TextView tv = (TextView)findViewById(R.id.bmrout);
+        tv.setText(String.format("%.2f",bmrout));
     }
 
     @Override
