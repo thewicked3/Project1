@@ -1,8 +1,11 @@
 package com.example.silverwindz.project1;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 
 
 public class BMRcal extends ActionBarActivity {
-
+    CalorieDBHelper helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,15 +70,28 @@ public class BMRcal extends ActionBarActivity {
         TextView tv = (TextView)findViewById(R.id.bmrout);
         tv.setText(String.format("%.2f",bmrout));
 
-        Intent res = new Intent();
-        res.putExtra("toGender", gr.getText().toString());
-        res.putExtra("toHeight", Double.parseDouble(height1.toString()));
-        res.putExtra("toWeight", Double.parseDouble(weight2.toString()));
-        res.putExtra("toAge", Double.parseDouble(age3.toString()));
-        res.putExtra("toBmr", bmrout);
+        /*Intent res = new Intent();
+        res.putExtra("gender", gr.getText().toString());
+        res.putExtra("height", Double.parseDouble(height1.toString()));
+        res.putExtra("weight", Double.parseDouble(weight2.toString()));
+        res.putExtra("age", Double.parseDouble(age3.toString()));
+        res.putExtra("bmr", bmrout);*/
 
-        finish();
+        helper = new CalorieDBHelper(this.getApplicationContext());
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues r = new ContentValues();
+        /*r.put("gender", gr.getText().toString());
+        r.put("height", height1);
+        r.put("weight", weight2);
+        r.put("age", age3);*/
+        r.put("bmr", bmrout);
 
+        long new_id = db.insert("caloriess", null, r);
+
+        //this.setResult(RESULT_OK, res);
+
+
+        Log.d("caloriess", "onActivityResult");
     }
 
     @Override

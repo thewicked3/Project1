@@ -17,50 +17,60 @@ import android.widget.TextView;
 
 
 public class Exercal extends ActionBarActivity {
-
     CalorieDBHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_cal);
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 99) {
             if (resultCode == RESULT_OK) {
-                String gen = data.getStringExtra("toGender");
-                double h = data.getDoubleExtra("toHeight", 0);
-                double w = data.getDoubleExtra("toWeight", 0);
-                double a = data.getDoubleExtra("toAge", 0);
-                double b = data.getDoubleExtra("toBmr", 0);
+                /*String gen = data.getStringExtra("gender");
+                double h = data.getDoubleExtra("height", 0);
+                double w = data.getDoubleExtra("weight", 0);
+                double a = data.getDoubleExtra("age", 0);
+                double b = data.getDoubleExtra("bmr", 0);
 
-
+                TextView bmr1 = (TextView)findViewById(R.id.bmrin);
+                bmr1.setText(String.format("%.2f",b));
 
                 helper = new CalorieDBHelper(this.getApplicationContext());
                 SQLiteDatabase db = helper.getWritableDatabase();
                 ContentValues r = new ContentValues();
-                r.put("toGender", gen);
-                r.put("toHeight", h);
-                r.put("toWeight", w);
-                r.put("toAge", a);
-                r.put("toBmr", b);
+                r.put("gender", gen);
+                r.put("height", h);
+                r.put("weight", w);
+                r.put("age", a);
+                r.put("bmr", b);*/
 
-                long new_id = db.insert("cal", null, r);
+
+                helper = new CalorieDBHelper(this);
+                SQLiteDatabase dbr = helper.getReadableDatabase();
+                Cursor cursor = dbr.rawQuery("SELECT bmr FROM caloriess;", null);
+                cursor.moveToFirst();
+
+                Double bmr = cursor.getDouble(0);
+
+                TextView bmr1 = (TextView)findViewById(R.id.bmrin);
+                bmr1.setText(Double.toString(bmr));
+
+               // long new_id = db.insert("caloriess", null, r);
 
             }
         }
 
-       Log.d("cal", "onActivityResult");
+       Log.d("caloriess", "onActivityResult");
     }
 
     public void buttonCaloClicked (View v)
     {
-        helper = new CalorieDBHelper(this);
-        SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT bmr;", null);
-        cursor.moveToFirst();
-        Double bmr = cursor.getDouble(0);
+
+        double bmr = 1000;
+
         double cal1 = 0;
         double burn = 0;
 
