@@ -27,7 +27,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT _id, gender, " +
-                        "('H: ' || height || ' ' || 'W: ' || weight || ' ' || 'A: ' || age || ' ' || 'BMR: ' || bmr)" +
+                        "('H: ' || height || '/' || 'W: ' || weight || '/' || 'A: ' || age || '/' || 'BMR: ' || bmr)" +
                         " AS cbmr FROM caloriess ORDER BY _id DESC;",null);
 
         adapter = new SimpleCursorAdapter(this,
@@ -100,7 +100,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
             // retrieve a new collection of records
             Cursor cursor = db.rawQuery("SELECT _id, gender, " +
-                    "('H: ' || height || ' ' || 'W: ' || weight || ' ' || 'A: ' || age || ' ' || 'BMR: ' || bmr)" +
+                    "('H: ' || height || '/' || 'W: ' || weight || '/' || 'A: ' || age || '/' || 'BMR: ' || bmr)" +
                     " AS cbmr FROM caloriess ORDER BY _id DESC;",null);
 
             // update the adapter

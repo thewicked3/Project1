@@ -21,7 +21,7 @@ public class CalorieDBHelper extends SQLiteOpenHelper {
                 "gender text not null," +             // course code
                 "height double default 0," +           // credit
                 "weight double default 0," +            // letter grade e.g. A, B+
-                "age double default 0," +
+                "age int default 0," +
                 "bmr double default 0);";
         db.execSQL(sql);
 

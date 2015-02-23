@@ -49,7 +49,7 @@ public class BMRcal extends ActionBarActivity {
 
         EditText age = (EditText)findViewById(R.id.age);
         String a = age.getText().toString();
-        Double age3 = Double.parseDouble(a);
+        Integer age3 = Integer.parseInt(a);
 
         double bmrout = 0;
 
