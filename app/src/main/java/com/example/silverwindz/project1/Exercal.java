@@ -129,7 +129,7 @@ public class Exercal extends ActionBarActivity {
         String t = dura.getText().toString();
         Double time1 = Double.parseDouble(t);
 
-        burn = cal1*(time1);
+        burn = cal1*(time1/60);
 
         TextView calburn = (TextView)findViewById(R.id.calout);
         calburn.setText(String.format("%.2f",burn));
