@@ -32,6 +32,10 @@
             android:name=".information"
             android:label="@string/title_activity_information" >
         </activity>
+        <activity
+            android:name=".Calorie2DBHelper"
+            android:label="@string/title_activity_calorie2_dbhelper" >
+        </activity>
     </application>
 
 </manifest>

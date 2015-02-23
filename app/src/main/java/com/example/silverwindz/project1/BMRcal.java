@@ -93,7 +93,7 @@ public class BMRcal extends ActionBarActivity {
 
             long new_id = db.insert("caloriess", null, r);
 
-            Log.d("caloriess", "onActivityResult");
+            //Log.d("caloriess", "onActivityResult");
         }
 
         TextView tv = (TextView)findViewById(R.id.bmrout);

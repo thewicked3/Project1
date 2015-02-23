@@ -8,5 +8,6 @@
     <string name="title_activity_exercal">Exercal</string>
     <string name="title_activity_exercise_list">exercise_list</string>
     <string name="title_activity_information">information</string>
+    <string name="title_activity_calorie2_dbhelper">Calorie2DBHelper</string>
 
 </resources>

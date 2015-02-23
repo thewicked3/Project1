@@ -66,10 +66,13 @@ public class Exercal extends ActionBarActivity {
         Cursor cursor = dbr.rawQuery("SELECT _id,bmr FROM caloriess ORDER BY _id DESC;", null);
         cursor.moveToFirst();
 
-        Double bmr = cursor.getDouble(0);
+        Double bmr = cursor.getDouble(1);
 
         double cal1 = 0;
         double burn = 0;
+
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues r = new ContentValues();
 
         RadioGroup exerlist = (RadioGroup)findViewById(R.id.exerlists);
         RadioButton exl = (RadioButton) findViewById(exerlist.getCheckedRadioButtonId());
@@ -77,45 +80,62 @@ public class Exercal extends ActionBarActivity {
 
         if (selex == R.id.rel) { //
             cal1 = ((bmr/24)*1.54);
+            r.put("exercise", "Relaxing");
+            long new_id = db.insert("calories2", null, r);
         }
 
         else if(selex == R.id.foot)//
         {
             cal1 = ((bmr/24)*8.00);
+            r.put("exercise", "Playing Football");
+            long new_id = db.insert("calories2", null, r);
         }
 
         else if(selex == R.id.run)//
         {
             cal1 = ((bmr/24)*7.50);
+            r.put("exercise", "Running");
+            long new_id = db.insert("calories2", null, r);
         }
 
         else if(selex == R.id.walk)//
         {
             cal1 = ((bmr/24)*3.80);
+            r.put("exercise", "Walking");
+            long new_id = db.insert("calories2", null, r);
         }
 
         else if(selex == R.id.lift)//
         {
             cal1 = ((bmr/24)*3.00);
+            r.put("exercise", "Weight lifting");
+            long new_id = db.insert("calories2", null, r);
         }
 
         else if(selex == R.id.mrt)//
         {
             cal1 = ((bmr/24)*10.00);
+            r.put("exercise", "Martial Arts");
+            long new_id = db.insert("calories2", null, r);
         }
 
         else{
             cal1 = ((bmr/24)*2.50);
+            r.put("exercise", "Education");
+            long new_id = db.insert("calories2", null, r);
         }
 
         EditText dura = (EditText)findViewById(R.id.duration);
         String t = dura.getText().toString();
         Double time1 = Double.parseDouble(t);
 
-        burn = cal1*(time1/60);
+        burn = cal1*(time1);
 
         TextView calburn = (TextView)findViewById(R.id.calout);
         calburn.setText(String.format("%.2f",burn));
+
+        r.put("caloburn", burn);
+        long new_id = db.insert("calories2", null, r);
 
     }
 

@@ -24,7 +24,9 @@
         android:textColor="#ff00caff"
         android:layout_below="@+id/editText"
         android:textFilterEnabled="false"
-        android:layout_above="@+id/toMain" />
+        android:layout_above="@+id/toMain"
+        android:touchscreenBlocksFocus="false"
+        android:cacheColorHint="#ff00ff37" />
 
     <Button
         android:layout_width="match_parent"

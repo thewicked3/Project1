@@ -27,15 +27,14 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT _id, gender, " +
-                        "('H: ' || height || ' ' || 'W: ' || weight || ' ' || 'A: ' || age || ' ' || 'BMR: ' || bmr)" +
-                        " AS cbmr FROM caloriess ORDER BY _id DESC;",null);
+                        "('H: ' || height || ' ' || 'W: ' || weight || ' ' || 'A: ' || age || ' ' || 'BMR: ' || bmr || ',' || 'EX: ' || exercise || ',' || 'CAL-BURN:' || caloburn)" +
+                        " AS cbmr FROM caloriess,calories2 ORDER BY _id DESC;",null);
 
         adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2,
                 cursor,
                 new String[] {"gender", "cbmr"},
-                new int[] {android.R.id.text1, android.R.id.text2},
-                0);
+                new int[] {android.R.id.text1, android.R.id.text2},0);
 
         ListView lv = (ListView)findViewById(R.id.listView);
         lv.setAdapter(adapter);
@@ -81,7 +80,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view,
                             int position, long id) {
-        Log.d("course", id + " is clicked");
+        Log.d("caloriess", id + " is clicked");
     }
 
     @Override
@@ -101,8 +100,8 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
             // retrieve a new collection of records
             Cursor cursor = db.rawQuery("SELECT _id, gender, " +
-                    "('H: ' || height || ' ' || 'W: ' || weight || ' ' || 'A: ' || age || ' ' || 'BMR: ' || bmr)" +
-                    " AS cbmr FROM caloriess ORDER BY _id DESC;",null);
+                    "('H: ' || height || ' ' || 'W: ' || weight || ' ' || 'A: ' || age || ' ' || 'BMR: ' || bmr || ',' || 'EX: ' || exercise || ',' || 'CAL-BURN:' || caloburn)" +
+                    " AS cbmr FROM caloriess,calories2 ORDER BY _id DESC;",null);
 
             // update the adapter
             adapter.changeCursor(cursor);
