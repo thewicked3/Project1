@@ -23,13 +23,25 @@ public class Exercal extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_cal);
+
+
         helper = new CalorieDBHelper(this);
+
+        SQLiteDatabase dbr = helper.getReadableDatabase();
+        Cursor cursor = dbr.rawQuery("SELECT _id,bmr FROM caloriess ORDER BY _id DESC;", null);
+        cursor.moveToFirst();
+
+        Double bmr = cursor.getDouble(1);
+
+        TextView bmr1 = (TextView)findViewById(R.id.bmrin);
+        bmr1.setText(String.format("%.2f",bmr));
+
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 99) {
             if (resultCode == RESULT_OK) {
-                /*String gen = data.getStringExtra("gender");
+                String gen = data.getStringExtra("gender");
                 double h = data.getDoubleExtra("height", 0);
                 double w = data.getDoubleExtra("weight", 0);
                 double a = data.getDoubleExtra("age", 0);
@@ -45,10 +57,14 @@ public class Exercal extends ActionBarActivity {
                 r.put("height", h);
                 r.put("weight", w);
                 r.put("age", a);
-                r.put("bmr", b);*/
+                r.put("bmr", b);
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                 SQLiteDatabase dbr = helper.getReadableDatabase();
                 Cursor cursor = dbr.rawQuery("SELECT bmr FROM caloriess;", null);
                 cursor.moveToFirst();
@@ -56,20 +72,22 @@ public class Exercal extends ActionBarActivity {
                 Double bmr = cursor.getDouble(0);
                 Log.d("caloriess", bmr.toString(bmr));
                 TextView bmr1 = (TextView)findViewById(R.id.bmrin);
-                bmr1.setText(Double.toString(bmr));
+                bmr1.setText(String.format("%.2f",bmr));
 
                //long new_id = db.insert("caloriess", null, r);
 
             }
-        }
 
        Log.d("caloriess", "onActivityResult");
-    }
+    }*/
 
     public void buttonCaloClicked (View v)
     {
+        SQLiteDatabase dbr = helper.getReadableDatabase();
+        Cursor cursor = dbr.rawQuery("SELECT _id,bmr FROM caloriess ORDER BY _id DESC;", null);
+        cursor.moveToFirst();
 
-        double bmr = 1000;
+        Double bmr = cursor.getDouble(0);
 
         double cal1 = 0;
         double burn = 0;
@@ -115,18 +133,13 @@ public class Exercal extends ActionBarActivity {
         String t = dura.getText().toString();
         Double time1 = Double.parseDouble(t);
 
-        burn = cal1*time1;
+        burn = cal1*(time1/60);
 
         TextView calburn = (TextView)findViewById(R.id.calout);
         calburn.setText(String.format("%.2f",burn));
 
 
         //GET THE INPUT AND CHANGE THE UNIT
-
-
-
-
-
 
     }
 
