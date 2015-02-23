@@ -1,5 +1,6 @@
 package com.example.silverwindz.project1;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
@@ -43,6 +44,17 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
     }
 
+    public void buttonClicked(View v) {
+        int id = v.getId();
+        Intent i;
+
+        switch(id) {
+            case R.id.toMain:
+                i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                break;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
