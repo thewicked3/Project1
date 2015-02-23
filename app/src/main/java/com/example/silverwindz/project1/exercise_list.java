@@ -44,7 +44,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
     }
 
-    public void buttonClicked(View v) {
+    public void buttonBackClicked(View v) {
         int id = v.getId();
         Intent i;
 

@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="Back to Main"
         android:id="@+id/toMain"
-        android:onClick="buttonToListClicked"
+        android:onClick="buttonBackClicked"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
