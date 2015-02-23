@@ -10,7 +10,7 @@
         android:id="@+id/editText"
         android:layout_column="7"
         android:text="Attempt List:"
-        android:textColor="#ff08deff"
+        android:textColor="#ff00ff99"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_alignParentTop="true"
@@ -26,7 +26,8 @@
         android:textFilterEnabled="false"
         android:layout_above="@+id/toMain"
         android:touchscreenBlocksFocus="false"
-        android:cacheColorHint="#ff00ff37" />
+        android:cacheColorHint="#ff08deff"
+        android:background="#ff2f2f2f" />
 
     <Button
         android:layout_width="match_parent"
