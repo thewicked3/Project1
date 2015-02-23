@@ -21,6 +21,8 @@ public class BMRcal extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmr_cal);
+
+        helper = new CalorieDBHelper(this);
     }
     public void buttonlinkClicked(View v) {
         int id = v.getId();
@@ -60,11 +62,38 @@ public class BMRcal extends ActionBarActivity {
 
         if (selgend == R.id.male) { //
             bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
+            //helper = new CalorieDBHelper(this.getApplicationContext());
+            SQLiteDatabase db = helper.getWritableDatabase();
+            ContentValues r = new ContentValues();
+        /*r.put("gender", gr.getText().toString());
+        r.put("height", height1);
+        r.put("weight", weight2);
+        r.put("age", age3);*/
+            r.put("gender","male");
+            r.put("bmr", bmrout);
+
+            long new_id = db.insert("caloriess", null, r);
+
+            Log.d("caloriess", "onActivityResult");
         }
 
         else //
         {
             bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
+            //.getApplicationContext());
+            SQLiteDatabase db = helper.getWritableDatabase();
+            ContentValues r = new ContentValues();
+        /*r.put("gender", gr.getText().toString());
+        r.put("height", height1);
+        r.put("weight", weight2);
+        r.put("age", age3);*/
+            r.put("gender","female");
+            r.put("bmr", bmrout);
+
+
+            long new_id = db.insert("caloriess", null, r);
+
+            Log.d("caloriess", "onActivityResult");
         }
 
         TextView tv = (TextView)findViewById(R.id.bmrout);
@@ -77,21 +106,12 @@ public class BMRcal extends ActionBarActivity {
         res.putExtra("age", Double.parseDouble(age3.toString()));
         res.putExtra("bmr", bmrout);*/
 
-        helper = new CalorieDBHelper(this.getApplicationContext());
-        SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues r = new ContentValues();
-        /*r.put("gender", gr.getText().toString());
-        r.put("height", height1);
-        r.put("weight", weight2);
-        r.put("age", age3);*/
-        r.put("bmr", bmrout);
 
-        long new_id = db.insert("caloriess", null, r);
 
         //this.setResult(RESULT_OK, res);
 
 
-        Log.d("caloriess", "onActivityResult");
+        //Log.d("caloriess", "onActivityResult");
     }
 
     @Override

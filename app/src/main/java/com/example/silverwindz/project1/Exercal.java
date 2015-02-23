@@ -23,7 +23,7 @@ public class Exercal extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_cal);
-
+        helper = new CalorieDBHelper(this);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -48,17 +48,17 @@ public class Exercal extends ActionBarActivity {
                 r.put("bmr", b);*/
 
 
-                helper = new CalorieDBHelper(this);
+
                 SQLiteDatabase dbr = helper.getReadableDatabase();
                 Cursor cursor = dbr.rawQuery("SELECT bmr FROM caloriess;", null);
                 cursor.moveToFirst();
 
                 Double bmr = cursor.getDouble(0);
-
+                Log.d("caloriess", bmr.toString(bmr));
                 TextView bmr1 = (TextView)findViewById(R.id.bmrin);
                 bmr1.setText(Double.toString(bmr));
 
-               // long new_id = db.insert("caloriess", null, r);
+               //long new_id = db.insert("caloriess", null, r);
 
             }
         }
