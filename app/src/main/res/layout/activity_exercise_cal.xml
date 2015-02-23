@@ -191,6 +191,7 @@
         android:text="Attempt List"
         android:id="@+id/atl"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="buttonToListClicked" />
 
 </RelativeLayout>

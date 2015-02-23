@@ -58,6 +58,8 @@ public class Exercal extends ActionBarActivity {
        Log.d("caloriess", "onActivityResult");
     }*/
 
+
+
     public void buttonCaloClicked (View v)
     {
         SQLiteDatabase dbr = helper.getReadableDatabase();
@@ -117,6 +119,17 @@ public class Exercal extends ActionBarActivity {
 
     }
 
+    public void buttonToListClicked(View v) {
+        int id = v.getId();
+        Intent i;
+
+        switch(id) {
+            case R.id.atl:
+                i = new Intent(this, exercise_list.class);
+                startActivity(i);
+                break;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
