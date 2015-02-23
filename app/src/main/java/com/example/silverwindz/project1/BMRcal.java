@@ -54,22 +54,19 @@ public class BMRcal extends ActionBarActivity {
         double bmrout = 0;
 
 
-        //GET THE INPUT AND CHANGE THE UNIT
-
         RadioGroup gender = (RadioGroup)findViewById(R.id.gender);
         RadioButton gr = (RadioButton) findViewById(gender.getCheckedRadioButtonId());
         int selgend = gender.getCheckedRadioButtonId();
 
         if (selgend == R.id.male) { //
             bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
-            //helper = new CalorieDBHelper(this.getApplicationContext());
             SQLiteDatabase db = helper.getWritableDatabase();
             ContentValues r = new ContentValues();
 
             r.put("height", height1);
             r.put("weight", weight2);
             r.put("age", age3);
-            r.put("gender","male");
+            r.put("gender","Male");
             r.put("bmr", bmrout);
 
             long new_id = db.insert("caloriess", null, r);
@@ -79,21 +76,20 @@ public class BMRcal extends ActionBarActivity {
 
         else //
         {
-            bmrout = ((13.75*weight2)+(5*height1)-(6.76*age3)+66);
-            //.getApplicationContext());
+            bmrout = ((9.56*weight2)+(1.85*height1)-(4.68*age3)+655);
             SQLiteDatabase db = helper.getWritableDatabase();
             ContentValues r = new ContentValues();
 
             r.put("height", height1);
             r.put("weight", weight2);
             r.put("age", age3);
-            r.put("gender","female");
+            r.put("gender","Female");
             r.put("bmr", bmrout);
 
 
             long new_id = db.insert("caloriess", null, r);
 
-            //Log.d("caloriess", "onActivityResult");
+            Log.d("caloriess", "onActivityResult");
         }
 
         TextView tv = (TextView)findViewById(R.id.bmrout);
