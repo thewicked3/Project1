@@ -65,10 +65,10 @@ public class BMRcal extends ActionBarActivity {
             //helper = new CalorieDBHelper(this.getApplicationContext());
             SQLiteDatabase db = helper.getWritableDatabase();
             ContentValues r = new ContentValues();
-        /*r.put("gender", gr.getText().toString());
-        r.put("height", height1);
-        r.put("weight", weight2);
-        r.put("age", age3);*/
+
+            r.put("height", height1);
+            r.put("weight", weight2);
+            r.put("age", age3);
             r.put("gender","male");
             r.put("bmr", bmrout);
 
@@ -83,10 +83,10 @@ public class BMRcal extends ActionBarActivity {
             //.getApplicationContext());
             SQLiteDatabase db = helper.getWritableDatabase();
             ContentValues r = new ContentValues();
-        /*r.put("gender", gr.getText().toString());
-        r.put("height", height1);
-        r.put("weight", weight2);
-        r.put("age", age3);*/
+
+            r.put("height", height1);
+            r.put("weight", weight2);
+            r.put("age", age3);
             r.put("gender","female");
             r.put("bmr", bmrout);
 
@@ -99,19 +99,6 @@ public class BMRcal extends ActionBarActivity {
         TextView tv = (TextView)findViewById(R.id.bmrout);
         tv.setText(String.format("%.2f",bmrout));
 
-        /*Intent res = new Intent();
-        res.putExtra("gender", gr.getText().toString());
-        res.putExtra("height", Double.parseDouble(height1.toString()));
-        res.putExtra("weight", Double.parseDouble(weight2.toString()));
-        res.putExtra("age", Double.parseDouble(age3.toString()));
-        res.putExtra("bmr", bmrout);*/
-
-
-
-        //this.setResult(RESULT_OK, res);
-
-
-        //Log.d("caloriess", "onActivityResult");
     }
 
     @Override
