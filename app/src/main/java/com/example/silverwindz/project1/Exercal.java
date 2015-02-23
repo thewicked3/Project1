@@ -41,30 +41,7 @@ public class Exercal extends ActionBarActivity {
     /*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 99) {
             if (resultCode == RESULT_OK) {
-                String gen = data.getStringExtra("gender");
-                double h = data.getDoubleExtra("height", 0);
-                double w = data.getDoubleExtra("weight", 0);
-                double a = data.getDoubleExtra("age", 0);
-                double b = data.getDoubleExtra("bmr", 0);
 
-                TextView bmr1 = (TextView)findViewById(R.id.bmrin);
-                bmr1.setText(String.format("%.2f",b));
-
-                helper = new CalorieDBHelper(this.getApplicationContext());
-                SQLiteDatabase db = helper.getWritableDatabase();
-                ContentValues r = new ContentValues();
-                r.put("gender", gen);
-                r.put("height", h);
-                r.put("weight", w);
-                r.put("age", a);
-                r.put("bmr", b);
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
                 SQLiteDatabase dbr = helper.getReadableDatabase();
                 Cursor cursor = dbr.rawQuery("SELECT bmr FROM caloriess;", null);
                 cursor.moveToFirst();
@@ -138,10 +115,8 @@ public class Exercal extends ActionBarActivity {
         TextView calburn = (TextView)findViewById(R.id.calout);
         calburn.setText(String.format("%.2f",burn));
 
-
-        //GET THE INPUT AND CHANGE THE UNIT
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
