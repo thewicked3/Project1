@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class exercise_list extends ActionBarActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
     CalorieDBHelper helper;
     SimpleCursorAdapter adapter;
+    SimpleCursorAdapter adapter1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +46,14 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
         Cursor cursor2 = db2.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || caloburn) AS cal FROM calories2 " +
                 "ORDER BY _id ASC;",null);
 
-        adapter = new SimpleCursorAdapter(this,
+        adapter1 = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2,
                 cursor2,
                 new String[] {"exercise", "cal"},
                 new int[] {android.R.id.text1, android.R.id.text2},0);
 
         ListView lv2 = (ListView)findViewById(R.id.listView);
-        lv2.setAdapter(adapter);
+        lv2.setAdapter(adapter1);
         lv2.setOnItemClickListener(this);
         lv2.setOnItemLongClickListener(this);
 
@@ -124,7 +125,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
                     "ORDER BY _id ASC;",null);
 
             // update the adapter
-            adapter.changeCursor(cursor2);
+            adapter1.changeCursor(cursor2);
             adapter.changeCursor(cursor);
         }
         db.close();
