@@ -83,66 +83,57 @@ public class Exercal extends ActionBarActivity {
         RadioButton exl = (RadioButton) findViewById(exerlist.getCheckedRadioButtonId());
         int selex = exerlist.getCheckedRadioButtonId();
 
-        if (selex == R.id.rel) { //
-            cal1 = ((bmr/24)*1.54);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Relaxing");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
 
-        else if(selex == R.id.foot)//
-        {
-            cal1 = ((bmr/24)*8.00);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Playing Football");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
 
-        else if(selex == R.id.run)//
-        {
-            cal1 = ((bmr/24)*7.50);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Running");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
+            if (selex == R.id.rel) { //
+                cal1 = ((bmr / 24) * 1.54);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Relaxing");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            } else if (selex == R.id.foot)//
+            {
+                cal1 = ((bmr / 24) * 8.00);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Playing Football");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            } else if (selex == R.id.run)//
+            {
+                cal1 = ((bmr / 24) * 7.50);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Running");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            } else if (selex == R.id.walk)//
+            {
+                cal1 = ((bmr / 24) * 3.80);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Walking");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            } else if (selex == R.id.lift)//
+            {
+                cal1 = ((bmr / 24) * 3.00);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Weight lifting");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            } else if (selex == R.id.mrt)//
+            {
+                cal1 = ((bmr / 24) * 10.00);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Martial Arts");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            } else {
+                cal1 = ((bmr / 24) * 2.50);
+                burn = cal1 * (time1 / 60);
+                r.put("exercise", "Education");
+                r.put("caloburn", burn);
+                long new_id = db.insert("calories2", null, r);
+            }
 
-        else if(selex == R.id.walk)//
-        {
-            cal1 = ((bmr/24)*3.80);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Walking");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
-
-        else if(selex == R.id.lift)//
-        {
-            cal1 = ((bmr/24)*3.00);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Weight lifting");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
-
-        else if(selex == R.id.mrt)//
-        {
-            cal1 = ((bmr/24)*10.00);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Martial Arts");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
-
-        else{
-            cal1 = ((bmr/24)*2.50);
-            burn = cal1*(time1/60);
-            r.put("exercise", "Education");
-            r.put("caloburn", burn);
-            long new_id = db.insert("calories2", null, r);
-        }
 
         TextView calburn = (TextView)findViewById(R.id.calout);
         calburn.setText(String.format("%.2f",burn));

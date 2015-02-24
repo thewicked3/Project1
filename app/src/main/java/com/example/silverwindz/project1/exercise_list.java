@@ -43,7 +43,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
 
         SQLiteDatabase db2 = helper.getReadableDatabase();
-        Cursor cursor2 = db2.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || caloburn) AS cal FROM calories2 " +
+        Cursor cursor2 = db2.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || ROUND(caloburn,2)) AS cal FROM calories2 " +
                 "ORDER BY _id ASC;",null);
 
         adapter1 = new SimpleCursorAdapter(this,
@@ -117,7 +117,7 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
                     "Successfully deleted the selected item.",
                     Toast.LENGTH_SHORT);
             t.show();
-            Cursor cursor2 = db.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || caloburn) AS cal FROM calories2 " +
+            Cursor cursor2 = db.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || ROUND(caloburn,2)) AS cal FROM calories2 " +
                     "ORDER BY _id ASC;",null);
 
             // retrieve a new collection of records
@@ -128,9 +128,26 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
             adapter1.changeCursor(cursor2);
             adapter.changeCursor(cursor);
         }
+
+        int n2 = db.delete("calories2",
+                "_id = ?",
+                new String[]{Long.toString(id)});
+        if (n2 == 1) {
+            db.delete("caloriess",
+                    "_id = ?",
+                    new String[]{Long.toString(id)});
+            Toast t = Toast.makeText(this,
+                    "Successfully deleted the selected item.",
+                    Toast.LENGTH_SHORT);
+            t.show();
+            Cursor cursor2 = db.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || ROUND(caloburn,2)) AS cal FROM calories2 " +
+                    "ORDER BY _id ASC;",null);
+
+
+            adapter1.changeCursor(cursor2);
+
+        }
         db.close();
-
-
         return true;
     }
 }
