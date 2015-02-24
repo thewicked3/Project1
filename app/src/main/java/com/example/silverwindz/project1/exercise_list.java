@@ -3,8 +3,8 @@ package com.example.silverwindz.project1;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,20 +26,35 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
         helper = new CalorieDBHelper(this);
 
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT _id, gender, " +
-                        "('H: ' || height || '/' || 'W: ' || weight || '/' || 'A: ' || age || '/' || 'BMR: ' || bmr)" +
-                        " AS cbmr FROM caloriess ORDER BY _id DESC;",null);
+        Cursor cursor = db.rawQuery("SELECT _id,(gender || '/' || 'Height: ' || height || '/' || 'Weight: ' || weight) AS gg, ('Age: ' || age || '/' || 'BMR: ' || bmr) AS cbmr FROM caloriess " +
+                        "ORDER BY _id ASC;",null);
 
         adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_2,
                 cursor,
-                new String[] {"gender", "cbmr"},
+                new String[] {"gg", "cbmr"},
                 new int[] {android.R.id.text1, android.R.id.text2},0);
 
-        ListView lv = (ListView)findViewById(R.id.listView);
+        ListView lv = (ListView)findViewById(R.id.listView2);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(this);
         lv.setOnItemLongClickListener(this);
+
+
+        SQLiteDatabase db2 = helper.getReadableDatabase();
+        Cursor cursor2 = db2.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || caloburn) AS cal FROM calories2 " +
+                "ORDER BY _id ASC;",null);
+
+        adapter = new SimpleCursorAdapter(this,
+                android.R.layout.simple_list_item_2,
+                cursor2,
+                new String[] {"exercise", "cal"},
+                new int[] {android.R.id.text1, android.R.id.text2},0);
+
+        ListView lv2 = (ListView)findViewById(R.id.listView);
+        lv2.setAdapter(adapter);
+        lv2.setOnItemClickListener(this);
+        lv2.setOnItemLongClickListener(this);
 
     }
 
@@ -79,13 +94,14 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view,
-                            int position, long id) {
-        Log.d("caloriess", id + " is clicked");
+                           int position, long id) {
+       Log.d("caloriess", id + " is clicked");
+
     }
 
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                   int position, long id) {
+                                int position, long id) {
         SQLiteDatabase db = helper.getWritableDatabase();
 
         int n = db.delete("caloriess",
@@ -93,20 +109,27 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
                 new String[]{Long.toString(id)});
 
         if (n == 1) {
-            Toast t = Toast.makeText(this.getApplicationContext(),
+            db.delete("calories2",
+                    "_id = ?",
+                    new String[]{Long.toString(id)});
+            Toast t = Toast.makeText(this,
                     "Successfully deleted the selected item.",
                     Toast.LENGTH_SHORT);
             t.show();
+            Cursor cursor2 = db.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || caloburn) AS cal FROM calories2 " +
+                    "ORDER BY _id ASC;",null);
 
             // retrieve a new collection of records
-            Cursor cursor = db.rawQuery("SELECT _id, gender, " +
-                    "('H: ' || height || '/' || 'W: ' || weight || '/' || 'A: ' || age || '/' || 'BMR: ' || bmr)" +
-                    " AS cbmr FROM caloriess ORDER BY _id DESC;",null);
+            Cursor cursor = db.rawQuery("SELECT _id,(gender || '/' || 'Height: ' || height || '/' || 'Weight: ' || weight) AS gg, ('Age: ' || age || '/' || 'BMR: ' || bmr) AS cbmr FROM caloriess " +
+                    "ORDER BY _id ASC;",null);
 
             // update the adapter
+            adapter.changeCursor(cursor2);
             adapter.changeCursor(cursor);
         }
         db.close();
+
+
         return true;
     }
 }

@@ -25,10 +25,11 @@ public class CalorieDBHelper extends SQLiteOpenHelper {
                 "bmr double default 0);";
         db.execSQL(sql);
 
-        /*String sql2 = "CREATE TABLE calories2 (" +
-                    "exercise text not null" +
+        String sql2 = "CREATE TABLE calories2 (" +
+                     "_id integer primary key autoincrement," +
+                    "exercise text not null," +
                     "caloburn double default 0);";
-        db.execSQL(sql2);*/
+        db.execSQL(sql2);
     }
 
     @Override
