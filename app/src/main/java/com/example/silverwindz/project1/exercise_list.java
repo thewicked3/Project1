@@ -31,10 +31,10 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
                         "ORDER BY _id ASC;",null);
 
         adapter = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_2,
+                R.layout.mylistitem,
                 cursor,
                 new String[] {"gg", "cbmr"},
-                new int[] {android.R.id.text1, android.R.id.text2},0);
+                new int[] {R.id.text1, R.id.text2},0);
 
         ListView lv = (ListView)findViewById(R.id.listView2);
         lv.setAdapter(adapter);
@@ -47,10 +47,10 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
                 "ORDER BY _id ASC;",null);
 
         adapter1 = new SimpleCursorAdapter(this,
-                android.R.layout.simple_list_item_2,
+                R.layout.mylistitem,
                 cursor2,
                 new String[] {"exercise", "cal"},
-                new int[] {android.R.id.text1, android.R.id.text2},0);
+                new int[] {R.id.text1, R.id.text2},0);
 
         ListView lv2 = (ListView)findViewById(R.id.listView);
         lv2.setAdapter(adapter1);
@@ -143,8 +143,12 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
             Cursor cursor2 = db.rawQuery("SELECT _id, exercise, ('Calorie-Burn: ' || ROUND(caloburn,2)) AS cal FROM calories2 " +
                     "ORDER BY _id ASC;",null);
 
+            Cursor cursor = db.rawQuery("SELECT _id,(gender || '/' || 'Height: ' || height || '/' || 'Weight: ' || weight) AS gg, ('Age: ' || age || '/' || 'BMR: ' || bmr) AS cbmr FROM caloriess " +
+                    "ORDER BY _id ASC;",null);
+
 
             adapter1.changeCursor(cursor2);
+            adapter.changeCursor(cursor);
 
         }
         db.close();

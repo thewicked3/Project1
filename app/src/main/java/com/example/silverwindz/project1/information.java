@@ -1,9 +1,11 @@
 package com.example.silverwindz.project1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class information extends ActionBarActivity {
@@ -14,7 +16,17 @@ public class information extends ActionBarActivity {
         setContentView(R.layout.activity_information);
     }
 
+    public void buttonBBackClicked(View v) {
+        int id = v.getId();
+        Intent i;
 
+        switch(id) {
+            case R.id.bb:
+                i = new Intent(this, MainActivity.class);
+                startActivity(i);
+                break;
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
