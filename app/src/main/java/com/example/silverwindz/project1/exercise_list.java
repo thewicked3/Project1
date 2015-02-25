@@ -30,6 +30,9 @@ public class exercise_list extends ActionBarActivity implements AdapterView.OnIt
         Cursor cursor = db.rawQuery("SELECT _id,(gender || '/' || 'Height: ' || height || '/' || 'Weight: ' || weight) AS gg, ('Age: ' || age || '/' || 'BMR: ' || bmr) AS cbmr FROM caloriess " +
                         "ORDER BY _id ASC;",null);
 
+        // Join ("SELECT caloriess._id , (ROUND(caloburn,2) || '/' || gender || '/' || 'Height: ' || height || '/' || 'Weight: ' || weight) AS gg, ('Age: ' || age || '/' || 'BMR: ' || bmr) AS cbmr FROM caloriess INNER JOIN calories2 ON caloriess._id = calories2._id " +
+        //"ORDER BY caloriess._id ASC;",null);
+
         adapter = new SimpleCursorAdapter(this,
                 R.layout.mylistitem,
                 cursor,
