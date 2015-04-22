@@ -8,37 +8,6 @@
     android:background="#ff2f2f2f"
     android:clickable="true">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BMR Calculator"
-        android:id="@+id/bmr"
-        android:layout_marginBottom="120dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="buttonClicked" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ATTEMPT List"
-        android:id="@+id/list"
-        android:layout_marginTop="52dp"
-        android:layout_alignTop="@+id/bmr"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="buttonClicked" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/images"
-        android:layout_above="@+id/bmr"
-        android:layout_below="@+id/textView" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,14 +18,15 @@
         android:layout_centerHorizontal="true"
         android:textColor="#ff00b5ff" />
 
-    <Button
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Information"
-        android:id="@+id/info"
-        android:layout_below="@+id/list"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/redcircle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="buttonClicked" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
